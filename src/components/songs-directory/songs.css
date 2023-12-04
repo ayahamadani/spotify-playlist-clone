@@ -1,0 +1,39 @@
+.songsMain {
+  background: linear-gradient(to top, #171a1b, #121212);
+}
+
+/* colors */
+.B3B3B3 {
+  color: #b3b3b3;
+}
+
+.white {
+  color: white;
+}
+
+.green {
+  color: #1ed760;
+}
+
+/* special divs */
+.song {
+  display: grid;
+  grid-template-columns: 0.5fr 2fr 2fr 2fr 0.5fr;
+}
+
+.album-cover {
+  height: 3em;
+}
+
+.currentSongMain {
+  background-color: black;
+  display: grid;
+  grid-template-columns: 2fr 3fr 2fr;
+  height: 6em;
+  color: white;
+}
+
+#songProgress {
+  height: 0.5em;
+  border: none;
+}

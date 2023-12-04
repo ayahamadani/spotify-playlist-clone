@@ -1,0 +1,45 @@
+/* Here */
+.main {
+  background: linear-gradient(to top, #121212, #262a2b);
+  color: #a2a4a3;
+}
+
+.left-container {
+  padding: 2em;
+}
+
+.right-container {
+  padding: 2em;
+}
+
+.play-btn-container {
+  display: block;
+  background-color: #1ad860;
+  color: #000300;
+}
+
+.play-btn {
+  padding: 1em;
+  width: 100%;
+}
+
+.enhance-btn {
+  border: solid 1px;
+  padding: 0.5em 1em;
+  color: #edefee;
+  border-radius: 5%;
+}
+
+.download-btn-container {
+  background-color: #1ad860;
+  color: #192820;
+}
+
+.more-options-div {
+  font-size: 1.5em;
+  margin-left: 1.5em;
+}
+
+.date-added-container {
+  font-size: 1.2em;
+}

@@ -1,0 +1,127 @@
+/* General Styling */
+* {
+  padding: 0px;
+  margin: 0px;
+}
+
+.circle {
+  border-radius: 50%;
+}
+
+/* Positioning */
+.flex {
+  display: flex;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.align-end {
+  align-items: flex-end;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.center {
+  justify-content: center;
+  align-items: center;
+}
+
+/* Margins */
+.ml1 {
+  margin-left: 1em;
+}
+
+.ml2 {
+  margin-left: 2em;
+}
+
+/* Paddings */
+.p1 {
+  padding: 1em;
+}
+
+.plhalf {
+  padding-left: 0.5em;
+}
+
+.pl1 {
+  padding-left: 1em;
+}
+
+.pbhalf {
+  padding-bottom: 0.5em;
+}
+
+.pb1 {
+  padding-bottom: 1em;
+}
+/* Height and Width */
+
+.h3 {
+  height: 3em;
+}
+
+.h4 {
+  height: 4em;
+}
+
+.w3 {
+  width: 3em;
+}
+
+.w4 {
+  width: 4em;
+}
+
+.w100 {
+  width: 100%;
+}
+
+/* Cursor Classes */
+.hover {
+  cursor: pointer;
+}
+
+.not-allowed {
+  cursor: not-allowed;
+}
+
+/* Font Classes */
+@font-face {
+  font-family: "circular";
+  src: url(./components/fonts/circular/ProductSans-Black.ttf);
+}
+
+@font-face {
+  font-family: "circularLight";
+  src: url(./components/fonts/circular/ProductSans-Light.ttf);
+}
+
+@font-face {
+  font-family: "gotham";
+  src: url(./components/fonts/circular/GothamMedium.ttf);
+}
+
+.circular {
+  font-family: "circular";
+}
+
+.circularLight {
+  font-family: "circularLight";
+}
+
+.gotham {
+  font-family: "gotham";
+}
