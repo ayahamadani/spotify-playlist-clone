@@ -3,31 +3,91 @@ import SongsData from "./songs/SongsData";
 import "./songs.css";
 
 export default function Songs() {
+  // STATES
+
   const [unheartedHeart, setUnheartedHeart] = useState(false);
   const [heartedHeart, setHeartedHeart] = useState(false);
+  // Pause state for the pause icon of the songs
   const [pause, setPause] = useState(false);
+  // Pause for the current song
+  const [pauseCurrent, setPauseCurrent] = useState(false);
+  //current song state
+  const [currentSong, setCurrentSong] = useState(null);
+  // Current audio state
+  const [audio, setAudio] = useState(null);
 
+  // FUNCTIONS
+
+  // hoverIn that gets triggered once you hover a song
   const hoverIn = () => {
+    // If the song isn't liked, the unliked heart shows
     if (!heartedHeart) {
       setUnheartedHeart(true);
     }
+    // The song number becomes a pause icon
+    setPause(true);
   };
 
+  // hoverOut function which gets triggered when you hover out of a song
   const hoverOut = () => {
+    // The unhearted heart disappears
     setUnheartedHeart(false);
+    // The pause icon is replaced by the song number
+    setPause(false);
   };
 
+  // heartSong which makes the song liked or unliked onClick
   const heartSong = () => {
     setHeartedHeart(!heartedHeart);
   };
 
-  const playSong = (filePath) => {
-    const audio = new Audio(filePath);
-    audio.play();
+  // playSong function that plays a song upon clicking on the play button based on the filePath
+  const playSong = (filePath, index) => {
+    // Check if an audio element exists and is currently playing
+    if (audio && !audio.paused) {
+      // Pause the current playing audio
+      audio.pause();
+      setPauseCurrent(false);
+      // If it's the same song that was playing, just pause it
+      if (currentSong === index) {
+        return;
+      }
+    }
+
+    // Create a new audio element for the selected song
+    const newAudio = new Audio(filePath);
+
+    // Update the currentSong and audio state
+    setCurrentSong(index);
+    setAudio(newAudio);
+
+    // Add an event listener for when the song ends
+    newAudio.addEventListener("ended", () => {
+      // Handle what should happen when the song ends (e.g., play the next song)
+    });
+
+    // If the audio was paused, set the currentTime to the current position
+    if (audio && audio.paused && currentSong === index) {
+      newAudio.currentTime = audio.currentTime;
+    }
+
+    // Play the new audio
+    newAudio.play();
+
+    // If needed, you can also update the state to show the pause icon
+    setPauseCurrent(true);
   };
 
   const clickPause = () => {
-    setPause(!pause);
+    setPauseCurrent(!pauseCurrent);
+
+    if (audio) {
+      if (pauseCurrent) {
+        audio.pause();
+      } else {
+        audio.play();
+      }
+    }
   };
 
   return (
@@ -53,9 +113,9 @@ export default function Songs() {
           >
             <div
               className="flex align-center justify-content-center"
-              onClick={() => playSong(song.filePath)}
+              onClick={() => playSong(song.filePath, index)}
             >
-              {<i className="fa-solid fa-play white" />}
+              {pause ? <i className="fa-solid fa-play" /> : song.id}
             </div>
 
             <div className="flex align-center">
@@ -66,7 +126,10 @@ export default function Songs() {
                   alt="wasteland-cover"
                 />
               </div>
-              <div className="white pl1">{song.title}</div>
+              <div>
+                <div className="white pl1">{song.title}</div>
+                <div className="pl1p2 grey fss">{song.artist}</div>
+              </div>
             </div>
 
             <div className="flex align-center">{song.album}</div>
@@ -88,7 +151,29 @@ export default function Songs() {
         ))}
       </div>
       <div className="currentSongMain">
-        meow
+        {/* Right Div */}
+        <div className="flex pl1">
+          <div className="current-album-cover-container">
+            {currentSong !== null ? (
+              <img
+                src={SongsData[currentSong].albumCover}
+                alt={SongsData[currentSong].title}
+                className="current-album-cover"
+              />
+            ) : (
+              <span>meow</span>
+            )}
+          </div>
+          <div className="flex flex-column justify-center pl1">
+            <div className="current-song-title">
+              {currentSong !== null ? SongsData[currentSong].title : "mewo"}{" "}
+            </div>
+            <div className="artist grey">
+              {currentSong !== null ? SongsData[currentSong].artist : "mewo"}{" "}
+            </div>
+          </div>
+        </div>
+
         <div>
           <div className="flex center">
             <div className="p1">
@@ -98,7 +183,7 @@ export default function Songs() {
               <i className="fa-solid fa-backward-step" />
             </div>
             <div className="p1" onClick={clickPause}>
-              {pause ? (
+              {pauseCurrent ? (
                 <i className="fa-solid fa-pause" />
               ) : (
                 <i className="fa-solid fa-play" />
@@ -115,7 +200,7 @@ export default function Songs() {
             <progress id="songProgress" max="100" value="25"></progress>
           </div>
         </div>
-        <div className="flex justify-end align-center">meow3</div>
+        <div className="flex justify-end align-center mr2">meow</div>
       </div>
     </div>
   );

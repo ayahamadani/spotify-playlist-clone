@@ -13,12 +13,24 @@
   display: flex;
 }
 
+.flex-column {
+  flex-direction: column;
+}
+
 .justify-content-center {
   justify-content: center;
 }
 
+.justify-start {
+  justify-content: flex-start;
+}
+
 .justify-between {
   justify-content: space-between;
+}
+
+.justify-center {
+  justify-content: center;
 }
 
 .justify-end {
@@ -39,6 +51,10 @@
 }
 
 /* Margins */
+.mr2 {
+  margin-right: 2em;
+}
+
 .ml1 {
   margin-left: 1em;
 }
@@ -64,9 +80,14 @@
   padding-bottom: 0.5em;
 }
 
+.pt1 {
+  padding-top: 1em;
+}
+
 .pb1 {
   padding-bottom: 1em;
 }
+
 /* Height and Width */
 
 .h3 {
@@ -124,4 +145,8 @@
 
 .gotham {
   font-family: "gotham";
+}
+
+.fss {
+  font-size: small;
 }

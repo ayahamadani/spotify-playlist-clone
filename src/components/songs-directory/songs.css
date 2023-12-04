@@ -15,6 +15,14 @@
   color: #1ed760;
 }
 
+.grey {
+  color: #a0a0a0;
+}
+
+.pl1p2 {
+  padding-left: 1.2em;
+}
+
 /* special divs */
 .song {
   display: grid;
@@ -23,6 +31,26 @@
 
 .album-cover {
   height: 3em;
+  border-radius: 3px;
+}
+
+.current-album-cover-container {
+  display: flex;
+  align-items: center;
+}
+
+.current-album-cover {
+  border-radius: 3px;
+  height: 4em;
+}
+
+.current-song-title {
+  font-size: 0.85em;
+}
+
+.artist {
+  margin-top: 0.2em;
+  font-size: 0.7em;
 }
 
 .currentSongMain {
